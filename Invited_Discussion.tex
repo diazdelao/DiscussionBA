@@ -1,5 +1,7 @@
 \documentclass{elsarticle}
 
+\usepackage{subcaption}
+
 %% Some settings to make the draft look good - these will not be needed in the official copy
 \makeatletter
 %% Remove frontmatter lines
@@ -21,20 +23,6 @@
 	\end{center}%
 	\gdef\thefootnote{\arabic{footnote}}%
 }
-
-%% Display Author 1 and Author 2, instead of Author 1, Author 2
-\def\@author#1{\g@addto@macro\elsauthors{\normalsize%
-		\def\baselinestretch{1}%
-		\upshape\authorsep#1\unskip\textsuperscript{%
-			\ifx\@fnmark\@empty\else\unskip\sep\@fnmark\let\sep=,\fi
-			\ifx\@corref\@empty\else\unskip\sep\@corref\let\sep=,\fi
-		}%
-		\def\authorsep{\space and\space}%
-		\global\let\@fnmark\@empty
-		\global\let\@corref\@empty
-		\global\let\sep\@empty}%
-	\@eadauthor={#1}
-}
 \makeatother
  %% End of draft settings
 
@@ -45,19 +33,51 @@
 		
 		\author{F-X Briol}
 		
-		\author{F. A. DiazDelao}%\corref{cor}}
-		%\ead{fado@liv.ac.uk}
+		\author{F. A. DiazDelao}
 		
 		\author{P. O. Hristov}
 		
 		\address{University College London \& The Alan Turing Institute}
 		\address{Institute for Risk and Uncertainty, University of Liverpool}
 		
-		%\cortext[cor]{Corresponding Author}
 		\journal{}
 	\end{frontmatter}
-	
-
-	
-	
+	%%
+	\section{Introduction}
+		Brief intro acknowledging the value of the BCG algorithm in the growing field of Probabilistic Numerics and its potential. Maybe write this section-free.
+	\section{Prior specification for BayesCG}
+		Paragraph 1 and 2 in main by F-X go here.
+		
+		Linear systems such as the one above are frequently used in an engineering context, for example to describe fluid flow, structural response to loading or increasingly a combination of the two. In fact, employing complex chains of models is used not only in design and analysis, but also in product certification. Therefore, a principled approach to quantifying the computational uncertainty in such models is very important to the reliability and utility of the models.
+		%
+		Very often practitioners designing or analysing the system at hand will have some form of knowledge about it, based on prior experience with similar systems. For example, in computational structural mechanics the operator $\mathcal{A}$ can be used to describe the \textit{stiffness} of the assembled system. In computational fluid dynamics, it can represent mesh coefficient matrices. The sparsity and any patterns in $\mathcal{A}$ will thus be governed largely by the geometry of the object under study. Figure \ref{fig:matrices} provides examples of stiffness matrices for different structures. Figure~\ref{fig:mat_beam} represents a notched cantilever beam, a widely used example in structural mechanics. The sparsity pattern shown in Figure~\ref{fig:mat_foil} encodes the mesh coefficients for a two dimensional airfoil \cite{Davis:2011}. Finally, the matrix in Figure~\ref{fig:mat_fan} depicts the stiffness matrix of a jet engine compressor stage. All three geometries were meshed with two-dimensional triangular elements. An important note to make here is that the plots in Figure~\ref{fig:mat_foil} and \ref{fig:mat_fan} represent a typical coupled analysis. The load on the compressor stage depends not only on its mass and rotational speed, but also on the force produced by its blades (airfoils). This force in turn depends on the rotational speed of the compressor.
+		
+		Paragraph 3 in main by F-X goes here.
+		%
+		\begin{figure}
+			\centering
+			\begin{subfigure}{0.3\textwidth}
+				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{not_beam}
+				\caption{}
+				\label{fig:mat_beam}
+			\end{subfigure}
+			\enskip
+			\begin{subfigure}{0.3\textwidth}
+				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{2d_airfoil.eps}
+				\caption{}
+				\label{fig:mat_fan}
+			\end{subfigure}
+			\enskip
+			\begin{subfigure}{0.3\textwidth}
+				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{2d_fan.eps}
+				\caption{}
+				\label{fig:mat_foil}
+			\end{subfigure}
+			\caption{Stiffness matrices exhibiting different sparsity and non-zero patterns. The systems described by these matrices are \subref{fig:mat_beam} notched beam; \subref{fig:mat_fan} jet engine compressor fan; \subref{fig:mat_foil} a laminar airfoil.}
+			\label{fig:matrices}
+		\end{figure}
+		
+		\bibliographystyle{elsarticle-num}
+		\bibliography{peter_bib}
+		
 \end{document}

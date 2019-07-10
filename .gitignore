@@ -6,6 +6,6 @@ __pycache__/
 *.aux
 *.log
 *.Rhistory
-
-# Ignore dat files
-#*.dat
+*eps-converted-to.pdf
+*.bbl
+*.blg
