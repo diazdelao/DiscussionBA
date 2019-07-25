@@ -11,6 +11,7 @@
 %\usepackage{algorithmic}
 \usepackage{algpseudocode}
 \usepackage[numbers]{natbib}
+%\usepackage{natbib}
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{bm}
@@ -85,7 +86,7 @@
 
 \maketitle
 	%%
-		Brief intro acknowledging the value of the BCG algorithm in the growing field of Probabilistic Numerics and its potential. Maybe write this section-free. 
+		Brief intro acknowledging the value of the BCG algorithm in the growing field of Probabilistic Numerics and its potential. Maybe write this section-free. \cite{Hen15}
 	\section{Prior specification for BayesCG}
 		In Bayesian quadrature/cubature, the task is to estimate some integral $\Pi[f] = \int_{\mathcal{X}} f(x) \pi(x) \mathrm{d}x$, given evaluations of the integrand $f$ at some locations on the domain $\mathcal{X}$. Clearly, the quantity of interest is 
 		$\Pi[f]$. Yet, it is common practice to instead put a prior on $f$, which then induces a prior on $\Pi[f]$. For differential equations, the problem is to find the solution $u$ of some system of equations $\mathcal{A} u =g$ (where $\mathcal{A}$ is some known integro-differential operator), given evaluations of the right-hand side $g$. Again, several Bayesian methods \citep{Cockayne2016,Chkrebtii2016} propose to specify a prior on the right-hand side $g$ instead of the quantity of interest $u$.
@@ -100,17 +101,17 @@
 		%
 		For example, in computational structural mechanics the operator $\mathcal{A}$ can be used to describe the \textit{stiffness} of an assembled finite element model (FEM). Similarly, in computational fluid dynamics (CFD) $\mathcal{A}$ can represent mesh coefficient matrices. Since both of these matrices describe physical properties of the object under study, their sparsity patterns will be governed largely by the object's geometry. It is therefore common that analysts have some prior knowledge about $\mathcal{A}$, based on experience with similar systems.
 		
-		Figure \ref{fig:matrices} provides examples of the form of $\mathcal{A}$ for different structures. Figure~\ref{fig:mat_beam} represents the stiffness matrix in an FEM of a notched cantilever beam. The sparsity pattern shown in Figure~\ref{fig:mat_foil} encodes the coefficients of an unstructured mesh for a two dimensional airfoil in a CFD simulation \cite{Davis:2011}. Finally, the matrix in Figure~\ref{fig:mat_fan} depicts the FEM stiffness matrix of a jet engine compressor stage. All three geometries were meshed with two-dimensional triangular elements. An important note to make here is that the matrices shown in Figures~\ref{fig:mat_foil} and \ref{fig:mat_fan} represent a typical coupled analysis. That is, the load on the compressor stage depends, among other factors, on the rotational speed and the force produced by its blades. This force in turn depends on the rotational speed of the compressor. %, among other factors.
-		Employing such chains of coupled models is not uncommon in design and analysis and can further complicate placing a prior on the solution, $u$.
+		Figure \ref{fig:matrices} provides examples of the form of $\mathcal{A}$ for different structures. The sparsity pattern shown in Figure~\ref{fig:mat_foil} encodes the coefficients of an unstructured mesh for a two dimensional airfoil in a CFD simulation \cite{Davis:2011}. The matrix in Figure~\ref{fig:mat_fan} depicts the FEM stiffness matrix of a jet engine compressor stage. Both geometries were meshed with two-dimensional triangular elements. An important note to make here is that the matrices shown in Figure~\ref{fig:matrices} represent typical coupled analyses. In this context, the load on the compressor stage depends, among other factors, on the rotational speed and the force produced by its blades. This force in turn depends on the rotational speed of the compressor. %, among other factors.
+		Employing such chains of coupled models is not uncommon in design and analysis. This could further complicate placing a prior on the solution, $u$. We believe that eliciting how to place a prior for this kind of coupled systems is a crucial question, very much aligned with one of the the ambitions of Probabilistic Numerics, namely, propagating uncertainty through pipelines of computation \cite{PN15}.
 		%
 		\begin{figure}[h!]
 			\centering
-			\begin{subfigure}{0.3\textwidth}
-				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{not_beam}
-				\caption{}
-				\label{fig:mat_beam}
-			\end{subfigure}
-			\enskip
+% 			\begin{subfigure}{0.3\textwidth}
+% 				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{not_beam}
+% 				\caption{}
+% 				\label{fig:mat_beam}
+% 			\end{subfigure}
+% 			\enskip
 			\begin{subfigure}{0.3\textwidth}
 				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{2d_airfoil}
 				\caption{}
@@ -122,7 +123,9 @@
 				\caption{}
 				\label{fig:mat_fan}
 			\end{subfigure}
-			\caption{Stiffness matrices exhibiting different degrees of sparsity and non-zero patterns. The systems described by these matrices are \subref{fig:mat_beam} notched beam; \subref{fig:mat_foil} a laminar airfoil; \subref{fig:mat_fan} jet engine compressor fan.}
+			\caption{Stiffness matrices with different degrees of sparsity and non-zero patterns. The systems described by these matrices are: 
+			%\subref{fig:mat_beam} notched beam; 
+			\subref{fig:mat_foil} a laminar airfoil; \subref{fig:mat_fan} jet engine compressor fan.}
 			\label{fig:matrices}
 		\end{figure}
 
