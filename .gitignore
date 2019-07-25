@@ -2,6 +2,7 @@
 __pycache__/
 
 # Ignore LaTeX build files
+*.out
 *.synctex.gz
 *.aux
 *.log
