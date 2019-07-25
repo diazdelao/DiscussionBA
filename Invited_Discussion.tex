@@ -10,7 +10,7 @@
 \usepackage{algorithm} %ctan.org\pkg\algorithms
 %\usepackage{algorithmic}
 \usepackage{algpseudocode}
-\usepackage{natbib}
+\usepackage[numbers]{natbib}
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{bm}
@@ -85,7 +85,7 @@
 
 \maketitle
 	%%
-		Brief intro acknowledging the value of the BCG algorithm in the growing field of Probabilistic Numerics and its potential. Maybe write this section-free.
+		Brief intro acknowledging the value of the BCG algorithm in the growing field of Probabilistic Numerics and its potential. Maybe write this section-free. 
 	\section{Prior specification for BayesCG}
 		In Bayesian quadrature/cubature, the task is to estimate some integral $\Pi[f] = \int_{\mathcal{X}} f(x) \pi(x) \mathrm{d}x$, given evaluations of the integrand $f$ at some locations on the domain $\mathcal{X}$. Clearly, the quantity of interest is 
 		$\Pi[f]$. Yet, it is common practice to instead put a prior on $f$, which then induces a prior on $\Pi[f]$. For differential equations, the problem is to find the solution $u$ of some system of equations $\mathcal{A} u =g$ (where $\mathcal{A}$ is some known integro-differential operator), given evaluations of the right-hand side $g$. Again, several Bayesian methods \citep{Cockayne2016,Chkrebtii2016} propose to specify a prior on the right-hand side $g$ instead of the quantity of interest $u$.
@@ -178,10 +178,7 @@ At this point, most of the equations in the two paragraph above look identical t
 
 \end{enumerate}
 
-
-
-		
 \bibliographystyle{plainnat}
 \bibliography{peter_bib}
-		
+
 \end{document}
