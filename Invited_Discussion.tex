@@ -86,14 +86,15 @@
 
 \maketitle
 	%%
-		Brief intro acknowledging the value of the BCG algorithm in the growing field of Probabilistic Numerics and its potential. Maybe write this section-free. \cite{Hen15}
+		We welcome this publication \cite{Cockayne2019} and firmly believe that it will become a fundamental contribution to the growing interest and research on probabilistic numerical methods.
+		
 	\section{Prior specification for BayesCG}
 		In Bayesian quadrature/cubature, the task is to estimate some integral $\Pi[f] = \int_{\mathcal{X}} f(x) \pi(x) \mathrm{d}x$, given evaluations of the integrand $f$ at some locations on the domain $\mathcal{X}$. Clearly, the quantity of interest is 
 		$\Pi[f]$. Yet, it is common practice to instead put a prior on $f$, which then induces a prior on $\Pi[f]$. For differential equations, the problem is to find the solution $u$ of some system of equations $\mathcal{A} u =g$ (where $\mathcal{A}$ is some known integro-differential operator), given evaluations of the right-hand side $g$. Again, several Bayesian methods \citep{Cockayne2016,Chkrebtii2016} propose to specify a prior on the right-hand side $g$ instead of the quantity of interest $u$.
 		
-		In both of these cases, the main motivation for placing priors on latent quantities is that this is more natural, or convenient, from a modelling point of view. At the same time, it is often possible to inspect the mathematical expression for the latent quantity, or we may at least have some additional information about it, such as smoothness or periodicity information. In such cases, encoding this information in the prior leads to algorithms with fast convergence rates and tighter credible intervals \cite{Cockayne2016,Briol2019PI}.
+		In both of these cases, the main motivation for placing priors on latent quantities is that this is more natural, or convenient, from a modelling point of view. At the same time, it is often possible to inspect the mathematical expression for the latent quantity, or we may at least have some additional information about it, such as smoothness or periodicity information. In such cases, encoding this information in the prior leads to algorithms with fast convergence rates and tighter credible intervals \cite{Cockayne2016,Briol2019PI}. We believe that the same is true for the case of linear systems.
 		
-		We believe the same is true in the case of linear systems. In many applications, it is possible to know beforehand properties of the matrix $A$. This knowledge can be encoded in a prior. %This may be information about the spectrum of the matrix, its conditioning or even sparsity. These properties will fully determine the difficulty of solving the linear system, and encoding them in a prior may similarly lead to algorithms with faster convergence rate, if not more accurate representations of uncertainty.
+		The authors place prior on the response vector $u$. We agree that invariance to preconditioners is a strong justification in contrast to placing a prior on the inverse of the matrix $A$  \cite{Hen15}. However, in many applications, it is possible to know beforehand properties of $A$. We argue that it is more natural to encode this knowledge in a prior. %This may be information about the spectrum of the matrix, its conditioning or even sparsity. These properties will fully determine the difficulty of solving the linear system, and encoding them in a prior may similarly lead to algorithms with faster convergence rate, if not more accurate representations of uncertainty.
 		%
 		To illustrate this, consider some of the systems of differential equations %frequently
 		used in engineering to describe fluid flow, structural response to loading or (increasingly) a combination of the two. %In fact, 
@@ -129,7 +130,7 @@
 			\label{fig:matrices}
 		\end{figure}
 
-		Properties of $\mathcal{A}$, such as its sparsity demonstrated above, will fully determine the difficulty of solving the linear system, and encoding them in a prior may lead to algorithms with faster convergence rate, and the potential for a more accurate representations of uncertainty.
+		%Properties of $\mathcal{A}$, such as its sparsity demonstrated above, will fully determine the difficulty of solving the linear system, and encoding them in a prior may lead to algorithms with faster convergence rate, and the potential for a more accurate representations of uncertainty.
 
 
 
