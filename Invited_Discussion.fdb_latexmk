@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex Invited_Discussion"] 1564149555 "Invited_Discussion.aux" "Invited_Discussion.bbl" "Invited_Discussion" 1564149577
+["bibtex Invited_Discussion"] 1564150794 "Invited_Discussion.aux" "Invited_Discussion.bbl" "Invited_Discussion" 1564151544
   "/usr/share/texlive/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "Invited_Discussion.aux" 1564149572 2695 68f00a42aaf48f655df10102c5bb7c43 ""
+  "Invited_Discussion.aux" 1564151536 2552 1e237ac48f298b651c6ff431b163bdea ""
   "Invited_Discussion.bcf" 0 -1 0 ""
   "peter_bib.bib" 1564149259 15348 15afc75a64911be576755ff9d0e86e97 ""
   (generated)
-  "Invited_Discussion.blg"
   "Invited_Discussion.bbl"
-["pdflatex"] 1564149572 "Invited_Discussion.tex" "/home/francois/git-repos/DiscussionBA/Invited_Discussion.pdf" "Invited_Discussion" 1564149577
+  "Invited_Discussion.blg"
+["pdflatex"] 1564151536 "Invited_Discussion.tex" "/home/francois/git-repos/DiscussionBA/Invited_Discussion.pdf" "Invited_Discussion" 1564151544
   "/etc/texmf/web2c/texmf.cnf" 1533718542 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/francois/git-repos/DiscussionBA/Invited_Discussion.aux" 1564149572 2695 68f00a42aaf48f655df10102c5bb7c43 ""
+  "/home/francois/git-repos/DiscussionBA/Invited_Discussion.aux" 1564151536 2552 1e237ac48f298b651c6ff431b163bdea ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -210,15 +210,15 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1539589434 852980 50c9efd449e6171d8bc709520705e91c ""
   "2d_airfoil.eps" 1564148627 149730 2e1724fa64b967269254524efc12fb1d ""
   "2d_fan.eps" 1564148627 1127545 9d644adb65ed5b40343c71978407d079 ""
-  "Invited_Discussion.aux" 1564149572 2695 68f00a42aaf48f655df10102c5bb7c43 ""
-  "Invited_Discussion.bbl" 1564149555 2904 dda004eec9f87be666f801d3a5cc4f81 "bibtex Invited_Discussion"
-  "Invited_Discussion.out" 1564149572 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Invited_Discussion.tex" 1564149576 16310 0b4e883a0d971348811a23225051d4a7 ""
+  "Invited_Discussion.aux" 1564151536 2552 1e237ac48f298b651c6ff431b163bdea ""
+  "Invited_Discussion.bbl" 1564150794 2557 657db16b055c42ab6e9dd03039975150 "bibtex Invited_Discussion"
+  "Invited_Discussion.out" 1564151536 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Invited_Discussion.tex" 1564151544 16302 7fceace69910105422262de2410eb2eb ""
   (generated)
   "Invited_Discussion.log"
   "Invited_Discussion.pdf"
-  "/home/francois/git-repos/DiscussionBA/Invited_Discussion.pdf"
-  "Invited_Discussion.aux"
-  "Invited_Discussion.spl"
   "/home/francois/git-repos/DiscussionBA/Invited_Discussion.log"
+  "Invited_Discussion.spl"
+  "Invited_Discussion.aux"
+  "/home/francois/git-repos/DiscussionBA/Invited_Discussion.pdf"
   "Invited_Discussion.out"

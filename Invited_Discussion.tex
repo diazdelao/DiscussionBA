@@ -86,36 +86,28 @@
 
 \maketitle
 	%%
-
-
-		We would like to congratulate the authors on a nice paper \citep{Cockayne2019}, and welcome this publication which we firmly believe will become a fundamental contribution to the growing field of probabilistic numerical methods and in particular the sub-field of Bayesian numerical methods. In this short piece, we first initiate a discussion on the choice of priors for solving linear systems, then propose an extension of the Bayesian conjugate gradient (BayesCG) algorithm for solving several related linear systems simultaneously.
+		We would like to congratulate the authors on their insightful paper, and welcome this publication which we firmly believe will become a fundamental contribution to the growing field of probabilistic numerical methods and in particular the sub-field of Bayesian numerical methods. In this short piece, we first initiate a discussion on the choice of priors for solving linear systems, then propose an extension of the Bayesian conjugate gradient (BayesCG) algorithm for solving several related linear systems simultaneously.
 		
-	\subsection*{Prior specification for BayesCG}
+	\subsection*{Prior specification for Bayesian inference of linear systems}
 
-		In Bayesian quadrature/cubature, the task is to estimate the integral $\Pi[f] = \int_{\mathcal{X}} f(x) \pi(x) \mathrm{d}x$, given evaluations of the integrand $f$ at some locations on the domain $\mathcal{X}$. Clearly, the quantity of interest is 
-		$\Pi[f]$. Yet, it is common to instead put a prior on $f$, which then induces a prior on $\Pi[f]$. For differential equations, the problem is to find the solution $u$ of a system of equations $\mathcal{A} u =g$ (where $\mathcal{A}$ is some known integro-differential operator), given evaluations of the right-hand side $g$. Several Bayesian methods \citep{Cockayne2016,Chkrebtii2016} also propose to specify a prior on the right-hand side $g$ instead of the quantity of interest $u$.
+		In the Bayesian paradigm, once a particular observation model is agreed upon, most of the work goes into selection of the prior. In the case of a linear system $A u = b$ and in particularly for conjugate gradient methods, our observation model consists of projections of $b$ observed without noise. The authors of \cite{Cockayne2019} place a Gaussian prior on $u$, which provides advantages to placing a prior on the inverse of the matrix $A$ \cite{Hen15}, including invariance to preconditioners. We agree that this is a significant advantage, but also think one could go much further in eliciting priors for solving linear systems, as is done for other Bayesian numerical methods. 
+
+		In Bayesian quadrature, the task is to estimate $\Pi[f] = \int_{\mathcal{X}} f(x) \pi(x) \mathrm{d}x$, given evaluations of the integrand $f$ at some locations on the domain $\mathcal{X}$. Clearly, the quantity of interest is 
+		$\Pi[f]$; yet, it is common to put a prior on $f$ instead, which then induces a prior on $\Pi[f]$. For differential equations, the problem is to find the solution $u$ of a system of equations $\mathcal{A} u(x) =g(x)$ (where $\mathcal{A}$ is some known integro-differential operator), given evaluations of $g$; and existing Bayesian methods also propose to specify a prior on $g$ instead of the quantity of interest $u$.
 		%
-		In both cases, the main motivation for placing priors on latent quantities is that this is more natural, or convenient, from a modelling point of view. At the same time, it is often possible to inspect the mathematical expression for the latent quantity, or we may at least have some additional information about it, such as smoothness or periodicity information. In such cases, encoding this information in the prior leads to algorithms with fast convergence rates and tighter credible intervals \cite{Cockayne2016,Briol2019PI}. We believe that the same is true for the case of linear systems.
+		In both cases, the main motivation for placing priors on latent quantities is that this is more natural, or convenient, from a modelling point of view. At the same time, it is often possible to inspect the mathematical expression for the latent quantity, or we may at least have some additional information about it, such as smoothness or periodicity information. In such cases, encoding this information in the prior leads to algorithms with fast convergence rates and tighter credible intervals, as demonstrated for these Bayesian integration and differential equation methods \cite{Cockayne2016,Briol2019PI}. We believe that the same is likely to be true for the case of linear systems.
 		
-		The authors of BayesCG place prior on the response vector $u$. We agree that invariance to preconditioners is a strong justification in contrast to placing a prior on the inverse of the matrix $A$  \cite{Hen15}. However, in many applications, it is possible to know beforehand properties of $A$. We argue that it is more natural to encode this knowledge in a prior. %This may be information about the spectrum of the matrix, its conditioning or even sparsity. These properties will fully determine the difficulty of solving the linear system, and encoding them in a prior may similarly lead to algorithms with faster convergence rate, if not more accurate representations of uncertainty.
-		%
-		To illustrate this, consider some of the systems of differential equations %frequently
-		used in engineering to describe fluid flow, structural response to loading or (increasingly) a combination of the two. %In fact, 
+
+		Indeed, in many applications, it is possible to know properties of $A$ beforehand, such as information on its spectrum, conditioning or sparsity. We argue that it is more natural to encode this knowledge in a prior, and it may in fact lead to a better calibration of uncertainty. To illustrate this, consider some of the systems of differential equations used in engineering to describe fluid flow and structural response to loading. %In fact, 
 		 %but also in product certification. %Therefore, a principled approach to quantifying the computational uncertainty in such models is very important to the reliability and utility of the models.
 		%
-		For example, in computational structural mechanics the operator $\mathcal{A}$ can be used to describe the \textit{stiffness} of an assembled finite element model (FEM). Similarly, in computational fluid dynamics (CFD) $\mathcal{A}$ can represent mesh coefficient matrices. Since both of these matrices describe physical properties of the object under study, their sparsity patterns will be governed largely by the object's geometry. It is therefore common that analysts have some prior knowledge about $\mathcal{A}$, based on engineering insight and experience in solving similar systems.
+		In computational structural mechanics the operator $\mathcal{A}$ can be used to describe the \textit{stiffness} of an assembled finite element model (FEM). Similarly, in computational fluid dynamics (CFD) $\mathcal{A}$ can represent mesh coefficient matrices. Since both of these matrices describe physical properties of the object under study, their sparsity patterns will be governed largely by the object's geometry. It is therefore common that analysts have some prior knowledge about $\mathcal{A}$, based on engineering insight and experience in solving similar systems.
 		
 		Figure \ref{fig:matrices} provides examples of the form of $\mathcal{A}$ for different structures. The sparsity pattern shown in Figure~\ref{fig:mat_foil} encodes the coefficients of an unstructured mesh for a two dimensional airfoil in a CFD simulation \cite{Davis:2011}. The matrix in Figure~\ref{fig:mat_fan} depicts the FEM stiffness matrix of a jet engine compressor stage. Both geometries were meshed with two-dimensional triangular elements. An important note to make here is that the matrices shown in Figure~\ref{fig:matrices} represent typical coupled analyses. In this context, the load on the compressor stage depends, among other factors, on the rotational speed and the force produced by its blades. This force in turn depends on the rotational speed of the compressor. %, among other factors.
 		Employing such chains of coupled models is not uncommon in design and analysis. This could further complicate placing a prior on the solution vector $u$. We believe that eliciting where to place a prior for coupled systems is a crucial question, very much aligned with one of the ambitions of Probabilistic Numerics. Namely, the propagation of uncertainty through pipelines of computation \cite{PN15}.
 		%
 		\begin{figure}[h!]
 			\centering
-% 			\begin{subfigure}{0.3\textwidth}
-% 				\includegraphics[width=\textwidth,trim={410 40 400 40},clip]{not_beam}
-% 				\caption{}
-% 				\label{fig:mat_beam}
-% 			\end{subfigure}
-% 			\enskip
 			\begin{subfigure}{0.28\textwidth}
 				\includegraphics[width=\textwidth,trim={390 40 400 40},clip]{2d_airfoil}
 				\caption{}
@@ -135,11 +127,6 @@
 		\end{figure}
 
 		%Properties of $\mathcal{A}$, such as its sparsity demonstrated above, will fully determine the difficulty of solving the linear system, and encoding them in a prior may lead to algorithms with faster convergence rate, and the potential for a more accurate representations of uncertainty.
-
-
-
-%\section{Prior Specification for BayesCG}
-
 
 
 
