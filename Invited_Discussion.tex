@@ -88,7 +88,8 @@
 	%%
 		We welcome this publication \cite{Cockayne2019} and firmly believe that it will become a fundamental contribution to the growing interest and research on probabilistic numerical methods.
 		
-	\section{Prior specification for BayesCG}
+	\subsection*{Prior specification for BayesCG}
+
 		In Bayesian quadrature/cubature, the task is to estimate the integral $\Pi[f] = \int_{\mathcal{X}} f(x) \pi(x) \mathrm{d}x$, given evaluations of the integrand $f$ at some locations on the domain $\mathcal{X}$. Clearly, the quantity of interest is 
 		$\Pi[f]$. Yet, it is common to instead put a prior on $f$, which then induces a prior on $\Pi[f]$. For differential equations, the problem is to find the solution $u$ of a system of equations $\mathcal{A} u =g$ (where $\mathcal{A}$ is some known integro-differential operator), given evaluations of the right-hand side $g$. Several Bayesian methods \citep{Cockayne2016,Chkrebtii2016} also propose to specify a prior on the right-hand side $g$ instead of the quantity of interest $u$.
 		%
@@ -142,7 +143,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{A Generalisation to Multiple Linear Systems}
+\subsection*{A Generalisation to Multiple Linear Systems}
 
 BayesCG also provides an excellent opportunity to develop the theory of linear solvers. Suppose we have several linear systems which need to be solved either simultaneously or sequentially, such that for $j \in \{1,\ldots,J\}$, we want to solve:
 \begin{align*}
@@ -173,7 +174,7 @@ At this point, most of the equations in the two paragraph above look identical t
 
 	\item The search directions obtained by the multi-system Bayesian conjugate gradient algorithm lead to some dependence across linear systems. That is, the estimator for $x_j^*$ for some fixed $j$ will be impacted by $A_{j'},b_{j'}$ for some $j' \neq j$. This dependence will come from the matrix $\barbelow{\Sigma}_0$, the covariance matrix of our prior. This leads to a larger computational cost, due to the fact that we are now having to perform matrix-vector products of matrices of size $dJ \times dJ$, but this may be acceptable if it provides improved accuracy and uncertainty quantification.
 
-	\item Several special cases of prior matrix $\barbelow{\Sigma}_0$, inspired by vector-valued reproducing kernel Hilbert spaces \citep{Alvarez2011Review} or multi-output Gaussian processes, can be more convenient to use in practice due to their intepretability. One example are separable covariance functions, which were previously explored by \cite{Xi2018MultiOutput} for transfer learning in numerical integration. They take the form $\barbelow{\Sigma}_{0}= B \otimes \Sigma_{0}$ where $\otimes$ denotes the Kronecker product, $B \in \mathbb{R}^{J \times J}$ and $\Sigma_0 \in \mathbb{R}^{d \times d}$. In this case, the matrix $B$ can be seen as a covariance matrix across tasks (i.e. across linear systems), whilst $\Sigma_0$ is the covariance matrix which would otherwise be used for a single linear system. In particular, this approach would allow us to combined the algorithm with alternative transfer learning approaches, such as the Krylov subspace recycling discussed in \cite{DeRoos2017} which can be used to select $\Sigma_0$.
+	\item Several special cases of prior matrix $\barbelow{\Sigma}_0$, inspired by vector-valued reproducing kernel Hilbert spaces or multi-output Gaussian processes, can be more convenient to use in practice due to their intepretability. One example are separable covariance functions, which were previously explored by \cite{Xi2018MultiOutput} for transfer learning in numerical integration. They take the form $\barbelow{\Sigma}_{0}= B \otimes \Sigma_{0}$ where $\otimes$ denotes the Kronecker product, $B \in \mathbb{R}^{J \times J}$ and $\Sigma_0 \in \mathbb{R}^{d \times d}$. In this case, the matrix $B$ can be seen as a covariance matrix across tasks (i.e. across linear systems), whilst $\Sigma_0$ is the covariance matrix which would otherwise be used for a single linear system. In particular, this approach would allow us to combined the algorithm with alternative transfer learning approaches, such as the Krylov subspace recycling discussed in \cite{DeRoos2017} which can be used to select $\Sigma_0$.
 
 	\item In the case where $\barbelow{\Sigma}_0$ has block-diagonal form $\text{BlockDiag}\left[\Sigma_{0,1},\ldots,\Sigma_{0,J}\right]$ for $\Sigma_{0,1},\ldots,\Sigma_{0,J} \in \mathbb{R}^{d \times d}$, the multi-system Bayesian conjugate gradient method reduces to $J$ separate instances of the Bayesian conjugate gradient; it is therefore a strict generalisation.
 
