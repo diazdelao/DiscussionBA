@@ -86,7 +86,9 @@
 
 \maketitle
 	%%
-		We welcome this publication \cite{Cockayne2019} and firmly believe that it will become a fundamental contribution to the growing interest and research on probabilistic numerical methods.
+
+
+		We would like to congratulate the authors on a nice paper \citep{Cockayne2019}, and welcome this publication which we firmly believe will become a fundamental contribution to the growing field of probabilistic numerical methods and in particular the sub-field of Bayesian numerical methods. In this short piece, we first initiate a discussion on the choice of priors for solving linear systems, then propose an extension of the Bayesian conjugate gradient (BayesCG) algorithm for solving several related linear systems simultaneously.
 		
 	\subsection*{Prior specification for BayesCG}
 
@@ -114,13 +116,14 @@
 % 				\label{fig:mat_beam}
 % 			\end{subfigure}
 % 			\enskip
-			\begin{subfigure}{0.3\textwidth}
+			\begin{subfigure}{0.28\textwidth}
 				\includegraphics[width=\textwidth,trim={390 40 400 40},clip]{2d_airfoil}
 				\caption{}
 				\label{fig:mat_foil}
 			\end{subfigure}
 			\enskip
-			\begin{subfigure}{0.3\textwidth}
+			\hspace{1cm}
+			\begin{subfigure}{0.28\textwidth}
 				\includegraphics[width=\textwidth,trim={390 40 400 40},clip]{2d_fan}
 				\caption{}
 				\label{fig:mat_fan}
@@ -145,11 +148,11 @@
 
 \subsection*{A Generalisation to Multiple Linear Systems}
 
-BayesCG also provides an excellent opportunity to develop the theory of linear solvers. Suppose we have several linear systems which need to be solved either simultaneously or sequentially, such that for $j \in \{1,\ldots,J\}$, we want to solve:
+BayesCG also provides an excellent opportunity to develop the theory of linear solvers. Suppose we have several linear systems which need to be solved either simultaneously or sequentially, such that for $j \in \{1,\ldots,J\}$, we want to solve\footnote{For simplicity of notation, we assume all systems are of the same size, but this could be generalised straightforwardly.}:
 \begin{align*}
 x_j^* = A_j b_j,  
 \end{align*}
-where $x_j^* \in \mathbb{R}^d$, $A_j \in \mathbb{R}^{d \times d}$ and $b_j \in \mathbb{R}^d$ for some $d \in \mathbb{N}_{> 0}$\footnote{For simplicity of notation, we assume all systems are of the same size, but this could be generalised straightforwardly.}. As discussed in 
+where $x_j^* \in \mathbb{R}^d$, $A_j \in \mathbb{R}^{d \times d}$ and $b_j \in \mathbb{R}^d$ for some $d \in \mathbb{N}_{> 0}$. As discussed in 
 \cite{DeRoos2017}, this is a common problem in statistics and machine learning. Take for example the issue of model selection for Gaussian processes: this includes calculating the log-marginal likelihood for several choices of covariance functions or covariance function hyperparameters, each requiring the solution of a linear system whose solutions will be closely related (atleast for similar choices of parameters). Similarly, for Bayesian inverse problems \citep{Dashti2017}, the forward problem needs to be solved for several values of the parameters (perhaps some Markov Chain Monte Carlo samples), which will often boil down to solving several closely related linear systems.
 
 As principled Bayesians, it would be natural to construct a joint estimator on the solutions of these $J$ linear systems, rather than estimating the solutions independently. This is particularly the case if we know anything about how the solutions of these linear systems relate to one another, in which case information available through search directions in the $j^{\text{th}}$ system may be informative about the solution $x^*_{j'}$ for $j \neq j'$. This idea is closely related to transfer learning, which was recently advocated for problems in numerical analysis by \cite{Xi2018MultiOutput} (who focused on numerical integration). Although several methods exist to transfer information from one task to the other, such as recycled Krylov spaces \citep{DeRoos2017}, there are no existing Bayesian approach. 
