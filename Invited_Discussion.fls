@@ -326,6 +326,7 @@ INPUT /home/francois/git-repos/DiscussionBA/Invited_Discussion.bbl
 INPUT /home/francois/git-repos/DiscussionBA/Invited_Discussion.bbl
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
 INPUT /home/francois/git-repos/DiscussionBA/Invited_Discussion.aux
 INPUT /home/francois/git-repos/DiscussionBA/Invited_Discussion.out
 INPUT /home/francois/git-repos/DiscussionBA/Invited_Discussion.out
@@ -347,4 +348,5 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
